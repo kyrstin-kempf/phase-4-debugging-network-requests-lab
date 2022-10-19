@@ -6,14 +6,25 @@ class ToysController < ApplicationController
     render json: toys
   end
 
+  # def show
+  #   toy = Toy.find_by(id: params[:id])
+  #   if toy
+  #     render json: toy
+  #   else 
+  #     render json: { error: "Toy not found" }, status: :not_found
+  #   end
+  # end
+
   def create
-    toy = Toys.create(toy_params)
+    # byebug
+    toy = Toy.create(toy_params)
     render json: toy, status: :created
   end
 
   def update
     toy = Toy.find_by(id: params[:id])
     toy.update(toy_params)
+    render json: toy
   end
 
   def destroy
